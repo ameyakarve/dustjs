@@ -40,7 +40,8 @@
   ],
   "dependencies": {
     "chokidar": "~1.0.1",
-    "cli": "~0.6.6"
+    "cli": "~0.6.6",
+    "node-notifier": "^4.2.1"
   },
   "devDependencies": {
     "ayepromise": "~1.1.1",

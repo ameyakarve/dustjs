@@ -5,7 +5,8 @@ var cli = require('cli').enable('glob', 'version'),
     dust = require('..'),
     fs = cli.native.fs,
     path = cli.native.path,
-    eol = cli.native.os.EOL;
+    eol = cli.native.os.EOL,
+    notifier = require('node-notifier');
 
 cli.setApp('dustc', require('../package.json').version);
 
@@ -147,6 +148,10 @@ function compile(data, name) {
     } catch(e) {
         if (cli.options.watch) {
             cli.error('[' + name + '] ' + e);
+            notifier.notify({
+                'title': 'Error in template ' + name,
+                'message': e + ''
+            });
             return;
         }
         return cli.fatal('[' + name + '] ' + e);
